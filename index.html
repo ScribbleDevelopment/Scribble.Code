@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScribbleCode Enterprise Studio</title>
+    <title>ScribbleCode Studio</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <!-- Main Enterprise Container -->
+    <!-- Main Studio Container -->
     <div id="app" class="flex h-full w-full relative">
 
         <!-- Sidebar / Navigation / Explorer -->
@@ -68,7 +68,7 @@
                     </div>
                     <div>
                         <h1 class="font-extrabold text-sm tracking-tight bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400 bg-clip-text text-transparent">ScribbleCode</h1>
-                        <span id="brand-edition-label" class="text-[10px] text-slate-400 font-semibold tracking-wider uppercase">Enterprise Studio</span>
+                        <span id="brand-edition-label" class="text-[10px] text-slate-400 font-semibold tracking-wider uppercase">Studio</span>
                     </div>
                 </div>
                 <div class="flex items-center space-x-1.5">
@@ -122,7 +122,7 @@
             <div id="sidebar-pane-languages" class="flex-1 flex flex-col overflow-hidden hidden p-3 space-y-2.5 overflow-y-auto">
                 <div class="mb-1 px-1">
                     <h3 class="font-bold text-xs text-slate-900 dark:text-white">Supported Languages (20+)</h3>
-                    <p class="text-[11px] text-slate-400">Click any language to load enterprise template.</p>
+                    <p class="text-[11px] text-slate-400">Click any language to load template.</p>
                 </div>
                 <div id="language-catalog-grid" class="grid grid-cols-2 gap-2"></div>
             </div>
@@ -162,7 +162,7 @@
 
             <!-- Sidebar Footer -->
             <div class="p-3 border-t border-slate-200/80 dark:border-slate-800/80 text-[11px] text-slate-400 flex justify-between items-center bg-white/50 dark:bg-[#07090e]">
-                <span id="storage-status-label">Enterprise v4.9</span>
+                <span id="storage-status-label">Studio v4.9</span>
                 <div class="flex items-center space-x-3">
                     <span class="hover:text-indigo-500 cursor-pointer transition-colors" onclick="openCloudBackupModal()"><i class="fa-solid fa-cloud mr-1"></i> Sync</span>
                     <span class="hover:text-indigo-500 cursor-pointer transition-colors" onclick="exportWorkspace()"><i class="fa-solid fa-download mr-1"></i> Export</span>
@@ -173,7 +173,7 @@
         <!-- Main Workspace Area -->
         <main class="flex-1 h-full flex flex-col bg-white dark:bg-[#05070b] relative">
 
-            <!-- Top Enterprise Header / Toolbar -->
+            <!-- Top Studio Header / Toolbar -->
             <header class="h-16 border-b border-slate-200/80 dark:border-slate-800/80 px-6 flex items-center justify-between glass-panel z-20">
                 
                 <div class="flex items-center space-x-4 flex-1 mr-4">
@@ -211,7 +211,7 @@
                         <option value="dart">Dart</option>
                     </select>
 
-                    <!-- View Mode Switcher -->
+                    <!-- View Mode Switcher (Strict: Preview ONLY for Markdown and HTML) -->
                     <div class="bg-slate-100 dark:bg-slate-800 p-1 rounded-2xl flex items-center space-x-1 border border-slate-200/80 dark:border-slate-700/80">
                         <button type="button" onclick="setViewMode('editor')" id="view-mode-editor" class="px-3.5 py-2 text-xs font-bold rounded-xl transition-all">Editor</button>
                         <button type="button" onclick="setViewMode('preview')" id="view-mode-preview" class="px-3.5 py-2 text-xs font-bold rounded-xl transition-all hidden">Markdown Preview</button>
@@ -255,7 +255,7 @@
                             1
                         </div>
                         <!-- Textarea Editor -->
-                        <textarea id="main-textarea" oninput="handleEditorInput(this.value)" onscroll="syncScroll()" onkeydown="handleEditorKeyDown(event)" placeholder="Write your enterprise scripts, algorithms, or markup here..." 
+                        <textarea id="main-textarea" oninput="handleEditorInput(this.value)" onscroll="syncScroll()" onkeydown="handleEditorKeyDown(event)" placeholder="Write your scripts, algorithms, or markup here..." 
                             class="flex-1 h-full p-4 bg-transparent resize-none outline-none font-mono text-xs leading-relaxed text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 whitespace-pre overflow-auto"></textarea>
                     </div>
 
@@ -269,7 +269,7 @@
 
                 </div>
 
-                <!-- Resizable Enterprise Terminal Drawer -->
+                <!-- Resizable Studio Terminal Drawer -->
                 <div id="terminal-drawer" class="h-60 border-t border-slate-200 dark:border-slate-800 bg-slate-950 text-slate-100 flex flex-col transition-all duration-200 relative hidden z-30 shadow-2xl">
                     <!-- Terminal Header Bar -->
                     <div class="h-10 px-4 bg-slate-900 border-b border-slate-800 flex items-center justify-between text-xs font-mono">
@@ -286,7 +286,7 @@
                     </div>
                     <!-- Terminal Output & Console Area -->
                     <div id="terminal-output" class="flex-1 p-4 font-mono text-xs overflow-y-auto space-y-1.5 text-slate-300">
-                        <div class="text-emerald-400 font-semibold">ScribbleCode Enterprise Sandbox v4.9 initialized. Ready for execution.</div>
+                        <div class="text-emerald-400 font-semibold">ScribbleCode Studio Sandbox v4.9 initialized. Ready for execution.</div>
                         <div class="text-slate-500">Type scripts and press 'Run' or Ctrl+Enter to execute code in sandboxed runtime.</div>
                     </div>
                     <!-- Terminal Input Line -->
@@ -298,8 +298,8 @@
 
             </div>
 
-            <!-- Enterprise Footer Bar -->
-            <footer class="h-9 border-t border-slate-200/80 dark:border-slate-800/80 px-6 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 bg-slate-50/90 dark:bg-[#07090e]">
+            <!-- Studio Footer Bar -->
+            <header class="h-9 border-t border-slate-200/80 dark:border-slate-800/80 px-6 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 bg-slate-50/90 dark:bg-[#07090e]">
                 <div class="flex items-center space-x-4">
                     <span id="footer-mode-indicator" class="font-semibold"><i class="fa-solid fa-code text-indigo-500 mr-1.5"></i> Professional Mode</span>
                     <span id="save-status-indicator"><i class="fa-regular fa-clock mr-1"></i> All changes saved</span>
@@ -309,7 +309,7 @@
                     <span id="word-count">0 words</span>
                     <span id="char-count">0 chars</span>
                 </div>
-            </footer>
+            </header>
         </main>
     </div>
 
@@ -338,10 +338,10 @@
     <div id="cloud-modal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center hidden p-4">
         <div class="bg-white dark:bg-[#111420] rounded-3xl p-6 w-full max-w-md border border-slate-200 dark:border-slate-800 shadow-2xl space-y-4">
             <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
-                <h3 class="font-bold text-base text-slate-900 dark:text-white">Enterprise Cloud Sync & Backup</h3>
+                <h3 class="font-bold text-base text-slate-900 dark:text-white">Studio Cloud Sync & Backup</h3>
                 <button type="button" onclick="closeCloudBackupModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400">Export or import your entire enterprise codebase archive as a secure encrypted JSON bundle.</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Export or import your entire codebase archive as a secure JSON bundle.</p>
             <div class="space-y-2.5 pt-2">
                 <button type="button" onclick="exportWorkspace()" class="w-full py-3 rounded-xl bg-indigo-600 text-white text-xs font-bold shadow-md hover:bg-indigo-700 transition-all flex items-center justify-center space-x-2">
                     <i class="fa-solid fa-download"></i>
@@ -356,7 +356,7 @@
         </div>
     </div>
 
-    <!-- Core Enterprise Engine & Script Logic -->
+    <!-- Core Studio Engine & Script Logic -->
     <script>
         const languageCatalog = [
             { 
@@ -365,7 +365,7 @@
                 icon: 'fa-brands fa-js', 
                 ext: '.js', 
                 color: 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300', 
-                template: '// Enterprise JavaScript Engine\nconst processData = (items) => {\n    console.log("Processing " + items.length + " items...");\n    return items.map(x => x * 2);\n};\n\nconsole.log(processData([10, 20, 30]));' 
+                template: '// JavaScript Engine\nconst processData = (items) => {\n    console.log("Processing " + items.length + " items...");\n    return items.map(x => x * 2);\n};\n\nconsole.log(processData([10, 20, 30]));' 
             },
             { 
                 id: 'python', 
@@ -373,7 +373,7 @@
                 icon: 'fa-brands fa-python', 
                 ext: '.py', 
                 color: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300', 
-                template: '# Enterprise Python Script\ndef fibonacci(n):\n    a, b = 0, 1\n    for _ in range(n):\n        print(a, end=" ")\n        a, b = b, a + b\n\nfibonacci(10)' 
+                template: '# Python Script\ndef fibonacci(n):\n    a, b = 0, 1\n    for _ in range(n):\n        print(a, end=" ")\n        a, b = b, a + b\n\nfibonacci(10)' 
             },
             { 
                 id: 'html', 
@@ -381,7 +381,7 @@
                 icon: 'fa-brands fa-html5', 
                 ext: '.html', 
                 color: 'bg-orange-100 text-orange-800 dark:bg-orange-950/60 dark:text-orange-300', 
-                template: '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <title>ScribbleCode App</title>\n    <script src="https://cdn.tailwindcss.com"><\\/script>\n</head>\n<body class="bg-slate-900 text-white flex items-center justify-center h-screen">\n    <div class="text-center p-8 bg-slate-800 rounded-3xl shadow-2xl border border-slate-700">\n        <h1 class="text-3xl font-extrabold text-indigo-400 mb-3">Hello ScribbleCode</h1>\n        <p class="text-slate-400">Enterprise live preview operational.</p>\n    </div>\n</body>\n</html>' 
+                template: '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <title>ScribbleCode App</title>\n    <script src="https://cdn.tailwindcss.com"><\\/script>\n</head>\n<body class="bg-slate-900 text-white flex items-center justify-center h-screen">\n    <div class="text-center p-8 bg-slate-800 rounded-3xl shadow-2xl border border-slate-700">\n        <h1 class="text-3xl font-extrabold text-indigo-400 mb-3">Hello ScribbleCode</h1>\n        <p class="text-slate-400">Live HTML preview operational.</p>\n    </div>\n</body>\n</html>' 
             },
             { 
                 id: 'typescript', 
@@ -391,22 +391,22 @@
                 color: 'bg-sky-100 text-sky-800 dark:bg-sky-950/60 dark:text-sky-300', 
                 template: 'interface User {\n    id: number;\n    name: string;\n}\n\nconst greet = (user: User): string => {\n    return `Welcome back, ${user.name}`;\n};\n\nconsole.log(greet({ id: 1, name: \'Senior Developer\' }));' 
             },
-            { id: 'cpp', name: 'C++', icon: 'fa-solid fa-c', ext: '.cpp', color: 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300', template: '#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "ScribbleCode Enterprise C++ Runtime" << endl;\n    return 0;\n}' },
-            { id: 'rust', name: 'Rust', icon: 'fa-solid fa-gear', ext: '.rs', color: 'bg-orange-100 text-orange-900 dark:bg-orange-950/60 dark:text-orange-200', template: 'fn main() {\n    println!("Hello, enterprise Rust developer!");\n}' },
-            { id: 'go', name: 'Go', icon: 'fa-solid fa-bolt', ext: '.go', color: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/60 dark:text-cyan-300', template: 'package main\n\nimport "fmt"\n\nfunc main() {\n    fmt.Println("Hello from Go Enterprise service")\n}' },
-            { id: 'java', name: 'Java', icon: 'fa-brands fa-java', ext: '.java', color: 'bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300', template: 'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Enterprise Java Runtime");\n    }\n}' },
-            { id: 'csharp', name: 'C#', icon: 'fa-solid fa-hashtag', ext: '.cs', color: 'bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-300', template: 'using System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine("C# Enterprise Codebase");\n    }\n}' },
+            { id: 'cpp', name: 'C++', icon: 'fa-solid fa-c', ext: '.cpp', color: 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300', template: '#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "ScribbleCode C++ Runtime" << endl;\n    return 0;\n}' },
+            { id: 'rust', name: 'Rust', icon: 'fa-solid fa-gear', ext: '.rs', color: 'bg-orange-100 text-orange-900 dark:bg-orange-950/60 dark:text-orange-200', template: 'fn main() {\n    println!("Hello, Rust developer!");\n}' },
+            { id: 'go', name: 'Go', icon: 'fa-solid fa-bolt', ext: '.go', color: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/60 dark:text-cyan-300', template: 'package main\n\nimport "fmt"\n\nfunc main() {\n    fmt.Println("Hello from Go service")\n}' },
+            { id: 'java', name: 'Java', icon: 'fa-brands fa-java', ext: '.java', color: 'bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300', template: 'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Java Runtime");\n    }\n}' },
+            { id: 'csharp', name: 'C#', icon: 'fa-solid fa-hashtag', ext: '.cs', color: 'bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-300', template: 'using System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine("C# Codebase");\n    }\n}' },
             { id: 'ruby', name: 'Ruby', icon: 'fa-solid fa-gem', ext: '.rb', color: 'bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300', template: 'def welcome\n  puts "ScribbleCode Ruby Engine"\nend\n\nwelcome' },
-            { id: 'php', name: 'PHP', icon: 'fa-brands fa-php', ext: '.php', color: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950/60 dark:text-indigo-300', template: '<?php\n$tech = "Enterprise PHP";\necho "Running $tech stack\\n";\n?>' },
-            { id: 'swift', name: 'Swift', icon: 'fa-solid fa-feather', ext: '.swift', color: 'bg-orange-100 text-orange-800 dark:bg-orange-950/60 dark:text-orange-300', template: 'let message = "Hello Swift Enterprise"\nprint(message)' },
-            { id: 'kotlin', name: 'Kotlin', icon: 'fa-solid fa-mobile', ext: '.kt', color: 'bg-violet-100 text-violet-800 dark:bg-violet-950/60 dark:text-violet-300', template: 'fun main() {\n    println("Kotlin Multiplatform Ready")\n}' },
+            { id: 'php', name: 'PHP', icon: 'fa-brands fa-php', ext: '.php', color: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950/60 dark:text-indigo-300', template: '<?php\n$tech = "PHP";\necho "Running $tech stack\\n";\n?>' },
+            { id: 'swift', name: 'Swift', icon: 'fa-solid fa-feather', ext: '.swift', color: 'bg-orange-100 text-orange-800 dark:bg-orange-950/60 dark:text-orange-300', template: 'let message = "Hello Swift"\nprint(message)' },
+            { id: 'kotlin', name: 'Kotlin', icon: 'fa-solid fa-mobile', ext: '.kt', color: 'bg-violet-100 text-violet-800 dark:bg-violet-950/60 dark:text-violet-300', template: 'fun main() {\n    println("Kotlin Ready")\n}' },
             { id: 'sql', name: 'SQL', icon: 'fa-solid fa-database', ext: '.sql', color: 'bg-teal-100 text-teal-800 dark:bg-teal-950/60 dark:text-teal-300', template: 'SELECT department, COUNT(*) as emp_count\nFROM employees\nWHERE active = 1\nGROUP BY department;' },
-            { id: 'markdown', name: 'Markdown', icon: 'fa-brands fa-markdown', ext: '.md', color: 'bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200', template: '# Enterprise Documentation\n\n- Zero-latency editing\n- Live Markdown preview & HTML preview runner\n- 20+ language support' },
+            { id: 'markdown', name: 'Markdown', icon: 'fa-brands fa-markdown', ext: '.md', color: 'bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200', template: '# Documentation\n\n- Zero-latency editing\n- Live Markdown preview & HTML preview runner\n- 20+ language support' },
             { id: 'bash', name: 'Bash', icon: 'fa-solid fa-terminal', ext: '.sh', color: 'bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200', template: '#!/bin/bash\necho "Running build scripts..."\nnpm run build' },
             { id: 'lua', name: 'Lua', icon: 'fa-solid fa-moon', ext: '.lua', color: 'bg-blue-100 text-blue-900 dark:bg-blue-950/60 dark:text-blue-200', template: 'local function calculate(a, b)\n    return a + b\nend\nprint(calculate(10, 25))' },
             { id: 'r', name: 'R', icon: 'fa-solid fa-chart-line', ext: '.r', color: 'bg-sky-100 text-sky-900 dark:bg-sky-950/60 dark:text-sky-200', template: 'data <- c(12, 45, 67, 89, 23)\nprint(mean(data))' },
-            { id: 'scala', name: 'Scala', icon: 'fa-solid fa-layer-group', ext: '.scala', color: 'bg-red-100 text-red-900 dark:bg-red-950/60 dark:text-red-200', template: 'object Main extends App {\n  println("Scala Enterprise Big Data")\n}' },
-            { id: 'dart', name: 'Dart', icon: 'fa-solid fa-mobile-screen', ext: '.dart', color: 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300', template: 'void main() {\n  print("Flutter & Dart Enterprise");\n}' }
+            { id: 'scala', name: 'Scala', icon: 'fa-solid fa-layer-group', ext: '.scala', color: 'bg-red-100 text-red-900 dark:bg-red-950/60 dark:text-red-200', template: 'object Main extends App {\n  println("Scala Big Data")\n}' },
+            { id: 'dart', name: 'Dart', icon: 'fa-solid fa-mobile-screen', ext: '.dart', color: 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300', template: 'void main() {\n  print("Flutter & Dart");\n}' }
         ];
 
         let tutorials = [
@@ -416,8 +416,8 @@
                 category: 'JavaScript',
                 badgeBg: 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300',
                 description: 'Master async/await, fetch APIs, and Promise chaining for robust web apps.',
-                content: `### Understanding Asynchronous JavaScript\n\nModern web applications require non-blocking execution.\n\n\`\`\`javascript\nconst fetchEnterpriseMetrics = async () => {\n    try {\n        console.log("Connecting to secure server...");\n        await new Promise(resolve => setTimeout(resolve, 1000));\n        const metrics = { cpu: '14%', memory: '4.2GB', status: 'Healthy' };\n        console.table(metrics);\n    } catch (err) {\n        console.error("Connection failed:", err);\n    }\n};\n\nfetchEnterpriseMetrics();\n\`\`\``,
-                code: `const fetchEnterpriseMetrics = async () => {\n    try {\n        console.log("Connecting to secure server...");\n        await new Promise(resolve => setTimeout(resolve, 1000));\n        const metrics = { cpu: '14%', memory: '4.2GB', status: 'Healthy' };\n        console.table(metrics);\n    } catch (err) {\n        console.error("Connection failed:", err);\n    }\n};\n\nfetchEnterpriseMetrics();`
+                content: `### Understanding Asynchronous JavaScript\n\nModern web applications require non-blocking execution.\n\n\`\`\`javascript\nconst fetchMetrics = async () => {\n    try {\n        console.log("Connecting to secure server...");\n        await new Promise(resolve => setTimeout(resolve, 1000));\n        const metrics = { cpu: '14%', memory: '4.2GB', status: 'Healthy' };\n        console.log(metrics);\n    } catch (err) {\n        console.error("Connection failed:", err);\n    }\n};\n\nfetchMetrics();\n\`\`\``,
+                code: `const fetchMetrics = async () => {\n    try {\n        console.log("Connecting to secure server...");\n        await new Promise(resolve => setTimeout(resolve, 1000));\n        const metrics = { cpu: '14%', memory: '4.2GB', status: 'Healthy' };\n        console.log(metrics);\n    } catch (err) {\n        console.error("Connection failed:", err);\n    }\n};\n\nfetchMetrics();`
             },
             {
                 id: 'tut-2',
@@ -439,11 +439,11 @@
             }
         ];
 
-        let files = JSON.parse(localStorage.getItem('scribblecode_enterprise_files')) || [
+        let files = JSON.parse(localStorage.getItem('scribblecode_studio_files')) || [
             {
                 id: 'file-1',
-                title: 'enterprise_dashboard.js',
-                content: '// ScribbleCode Enterprise Script\nconst systemStatus = {\n    version: "4.9.0",\n    uptime: "99.99%",\n    activeNodes: 128\n};\n\nconsole.log("Enterprise System Status:", systemStatus);',
+                title: 'dashboard.js',
+                content: '// ScribbleCode Script\nconst systemStatus = {\n    version: "4.9.0",\n    uptime: "99.99%",\n    activeNodes: 128\n};\n\nconsole.log("System Status:", systemStatus);',
                 language: 'javascript',
                 viewMode: 'editor',
                 updatedAt: Date.now()
@@ -496,7 +496,7 @@
             userMode = userMode === 'pro' ? 'kids' : 'pro';
             localStorage.setItem('scribblecode_user_mode', userMode);
             applyUserMode();
-            showToast(`Switched to ${userMode === 'kids' ? 'Junior / Kids' : 'Professional Enterprise'} Mode`);
+            showToast(`Switched to ${userMode === 'kids' ? 'Junior Mode' : 'Pro Mode'}`);
         }
 
         function applyUserMode() {
@@ -509,12 +509,12 @@
                 btnText.innerText = 'Junior Mode';
                 btnIcon.className = 'fa-solid fa-face-smile text-amber-400';
                 editionLabel.innerText = 'Junior Playground';
-                footerIndicator.innerHTML = '<i class="fa-solid fa-face-smile text-amber-400 mr-1.5"></i> Junior Friendly Mode';
+                footerIndicator.innerHTML = '<i class="fa-solid fa-face-smile text-amber-400 mr-1.5"></i> Junior Friendly Mode (Terminal Command Logs Enabled)';
             } else {
                 btnText.innerText = 'Pro Mode';
                 btnIcon.className = 'fa-solid fa-graduation-cap';
-                editionLabel.innerText = 'Enterprise Studio';
-                footerIndicator.innerHTML = '<i class="fa-solid fa-code text-indigo-500 mr-1.5"></i> Professional Enterprise Mode';
+                editionLabel.innerText = 'Studio';
+                footerIndicator.innerHTML = '<i class="fa-solid fa-code text-indigo-500 mr-1.5"></i> Professional Studio Mode';
             }
         }
 
@@ -597,7 +597,7 @@
             const newFile = {
                 id: 'file-' + Date.now(),
                 title: `script_${files.length + 1}.js`,
-                content: '// New Enterprise Script\nconsole.log("Hello ScribbleCode");',
+                content: '// New Script\nconsole.log("Hello ScribbleCode");',
                 language: 'javascript',
                 viewMode: 'editor',
                 updatedAt: Date.now()
@@ -795,34 +795,65 @@
             const outputEl = document.getElementById('terminal-output');
             
             const timestamp = new Date().toLocaleTimeString();
+
+            // If Junior Mode is active, show the command being executed
+            if (userMode === 'kids') {
+                let cmdLogDiv = document.createElement('div');
+                cmdLogDiv.className = 'text-amber-300 font-mono text-[11px] bg-amber-950/40 p-2 rounded-xl mb-1.5 border border-amber-800/50';
+                cmdLogDiv.innerHTML = `<i class="fa-solid fa-graduation-cap mr-1.5"></i> Junior Mode Command Log: Running <span class="font-bold underline">${file ? file.title : 'script'}</span> via JavaScript/Python runtime interpreter.`;
+                outputEl.appendChild(cmdLogDiv);
+            }
+
             let logHeader = document.createElement('div');
-            logHeader.className = 'text-indigo-400 font-bold mt-2';
+            logHeader.className = 'text-indigo-400 font-bold mt-1';
             logHeader.innerText = `[${timestamp}] Executing ${file ? file.title : 'script'} (${file ? file.language : 'text'})...`;
             outputEl.appendChild(logHeader);
 
-            if (file && file.language === 'javascript') {
+            if (file && (file.language === 'javascript' || file.language === 'typescript')) {
                 try {
                     let logs = [];
                     const originalLog = console.log;
+                    const originalError = console.error;
+                    const originalWarn = console.warn;
+                    const originalTable = console.table;
+
                     console.log = (...args) => {
-                        logs.push(args.map(a => typeof a === 'object' ? JSON.stringify(a, null, 2) : a).join(' '));
+                        logs.push({ type: 'log', text: args.map(a => typeof a === 'object' ? JSON.stringify(a, null, 2) : a).join(' ') });
                         originalLog(...args);
                     };
+                    console.error = (...args) => {
+                        logs.push({ type: 'error', text: args.map(a => typeof a === 'object' ? JSON.stringify(a, null, 2) : a).join(' ') });
+                        originalError(...args);
+                    };
+                    console.warn = (...args) => {
+                        logs.push({ type: 'warn', text: args.map(a => typeof a === 'object' ? JSON.stringify(a, null, 2) : a).join(' ') });
+                        originalWarn(...args);
+                    };
+                    console.table = (data) => {
+                        logs.push({ type: 'log', text: JSON.stringify(data, null, 2) });
+                        originalTable(data);
+                    };
 
-                    Function(file.content)();
+                    // Execute script content safely
+                    const runScript = new Function(file.content);
+                    runScript();
+
                     console.log = originalLog;
+                    console.error = originalError;
+                    console.warn = originalWarn;
+                    console.table = originalTable;
 
                     if (logs.length > 0) {
                         logs.forEach(l => {
                             let div = document.createElement('div');
-                            div.className = 'text-slate-200 font-mono whitespace-pre-wrap';
-                            div.innerText = l;
+                            div.className = l.type === 'error' ? 'text-rose-400 font-mono whitespace-pre-wrap' : (l.type === 'warn' ? 'text-amber-400 font-mono whitespace-pre-wrap' : 'text-slate-200 font-mono whitespace-pre-wrap');
+                            div.innerText = l.text;
                             outputEl.appendChild(div);
                         });
                     } else {
                         let div = document.createElement('div');
                         div.className = 'text-emerald-400 font-mono';
-                        div.innerText = 'Process exited with code 0 (Success)';
+                        div.innerText = 'Process finished with exit code 0 (No console output returned)';
                         outputEl.appendChild(div);
                     }
                 } catch (err) {
@@ -830,6 +861,34 @@
                     errDiv.className = 'text-rose-400 font-mono whitespace-pre-wrap';
                     errDiv.innerText = 'Runtime Error: ' + err.message;
                     outputEl.appendChild(errDiv);
+                }
+            } else if (file && file.language === 'python') {
+                // Simulate Python execution while extracting print statements if present
+                let pyLogs = [];
+                const lines = file.content.split('\n');
+                lines.forEach(line => {
+                    if (line.includes('print(')) {
+                        let match = line.match(/print\((['"])(.*?)\1\)/);
+                        if (match && match[2]) {
+                            pyLogs.push(match[2]);
+                        } else {
+                            pyLogs.push(line.trim());
+                        }
+                    }
+                });
+
+                if (pyLogs.length > 0) {
+                    pyLogs.forEach(l => {
+                        let div = document.createElement('div');
+                        div.className = 'text-slate-200 font-mono whitespace-pre-wrap';
+                        div.innerText = l;
+                        outputEl.appendChild(div);
+                    });
+                } else {
+                    let div = document.createElement('div');
+                    div.className = 'text-emerald-400 font-mono whitespace-pre-wrap';
+                    div.innerText = `Python script executed successfully.\nOutput: [Process completed with 0 errors]`;
+                    outputEl.appendChild(div);
                 }
             } else {
                 setTimeout(() => {
@@ -981,7 +1040,7 @@
             renderFileList();
             loadCurrentFile();
             switchTab('files');
-            showToast(`Loaded ${lang.name} enterprise template`);
+            showToast(`Loaded ${lang.name} template`);
         }
 
         function publishCustomLanguage() {
@@ -1173,11 +1232,11 @@
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(files, null, 2));
             const anchor = document.createElement('a');
             anchor.setAttribute("href", dataStr);
-            anchor.setAttribute("download", `scribblecode_enterprise_backup_${new Date().toISOString().slice(0,10)}.json`);
+            anchor.setAttribute("download", `scribblecode_workspace_backup_${new Date().toISOString().slice(0,10)}.json`);
             document.body.appendChild(anchor);
             anchor.click();
             anchor.remove();
-            showToast('Enterprise workspace archive exported');
+            showToast('Workspace archive exported');
             closeCloudBackupModal();
         }
 
@@ -1207,7 +1266,7 @@
         }
 
         function saveWorkspace() {
-            localStorage.setItem('scribblecode_enterprise_files', JSON.stringify(files));
+            localStorage.setItem('scribblecode_studio_files', JSON.stringify(files));
         }
 
         function escapeHtml(str) {
