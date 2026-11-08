@@ -1,4 +1,4 @@
 # Scribble.Code
 **idk twin**
 
-(sigma)[roblox.com]
+[sigma](roblox.com)
