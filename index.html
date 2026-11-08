@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en" class="h-full dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -438,7 +438,7 @@
         ];
 
         let currentFileId = files[0] ? files[0].id : null;
-        let isDarkMode = localStorage.getItem('scribblecode_theme') === 'dark' || (!localStorage.getItem('scribblecode_theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        let isDarkMode = localStorage.getItem('scribblecode_theme') ? localStorage.getItem('scribblecode_theme') === 'dark' : true;
         let sidebarOpen = true;
         let userMode = localStorage.getItem('scribblecode_user_mode') || 'pro';
         let activeTab = 'files';
