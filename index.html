@@ -181,7 +181,7 @@
             <header class="h-16 border-b border-slate-200/80 dark:border-slate-800/80 px-6 flex items-center justify-between glass-panel z-20">
                 
                 <div class="flex items-center space-x-4 flex-1 mr-4">
-                    <button onclick="toggleSidebar()" title="Toggle Sidebar" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-colors">
+                    <button type="button" onclick="toggleSidebar()" title="Toggle Sidebar" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-colors">
                         <i class="fa-solid fa-bars-staggered text-sm"></i>
                     </button>
                     <input type="text" id="file-title-input" oninput="updateCurrentFileTitle(this.value)" placeholder="filename.js" 
@@ -217,9 +217,9 @@
 
                     <!-- View Mode Switcher -->
                     <div class="bg-slate-100 dark:bg-slate-800 p-1 rounded-2xl flex items-center space-x-1 border border-slate-200/80 dark:border-slate-700/80">
-                        <button onclick="setViewMode('editor')" id="view-mode-editor" class="px-3.5 py-2 text-xs font-bold rounded-xl transition-all">Editor</button>
-                        <button onclick="setViewMode('preview')" id="view-mode-preview" class="px-3.5 py-2 text-xs font-bold rounded-xl transition-all">Preview</button>
-                        <button onclick="setViewMode('htmlrun')" id="view-mode-htmlrun" class="px-3.5 py-2 text-xs font-bold rounded-xl transition-all text-indigo-600 dark:text-indigo-400 flex items-center space-x-1 hidden">
+                        <button type="button" onclick="setViewMode('editor')" id="view-mode-editor" class="px-3.5 py-2 text-xs font-bold rounded-xl transition-all">Editor</button>
+                        <button type="button" onclick="setViewMode('preview')" id="view-mode-preview" class="px-3.5 py-2 text-xs font-bold rounded-xl transition-all hidden">Preview</button>
+                        <button type="button" onclick="setViewMode('htmlrun')" id="view-mode-htmlrun" class="px-3.5 py-2 text-xs font-bold rounded-xl transition-all text-indigo-600 dark:text-indigo-400 flex items-center space-x-1 hidden">
                             <i class="fa-solid fa-play text-[10px]"></i>
                             <span>Run App</span>
                         </button>
@@ -228,18 +228,18 @@
                     <div class="h-6 w-px bg-slate-200 dark:bg-slate-800 mx-1"></div>
 
                     <!-- Execute Code in Terminal / Sandbox Button -->
-                    <button onclick="executeCodeInTerminal()" title="Run Script in Terminal (Ctrl+Enter)" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center space-x-2 shadow-lg shadow-emerald-500/25 transition-all transform hover:scale-105">
+                    <button type="button" onclick="executeCodeInTerminal()" title="Run Script in Terminal (Ctrl+Enter)" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center space-x-2 shadow-lg shadow-emerald-500/25 transition-all transform hover:scale-105">
                         <i class="fa-solid fa-play text-[10px]"></i>
                         <span>Run</span>
                     </button>
 
                     <!-- Format Code -->
-                    <button onclick="formatCode()" title="Auto Format" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-colors">
+                    <button type="button" onclick="formatCode()" title="Auto Format" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-colors">
                         <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
                     </button>
 
                     <!-- Terminal Toggle -->
-                    <button onclick="toggleTerminal()" title="Toggle Terminal" id="terminal-toggle-btn" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-colors relative">
+                    <button type="button" onclick="toggleTerminal()" title="Toggle Terminal" id="terminal-toggle-btn" class="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-colors relative">
                         <i class="fa-solid fa-terminal text-xs"></i>
                         <span id="terminal-badge" class="absolute top-2 right-2 w-2 h-2 rounded-full bg-emerald-500 hidden"></span>
                     </button>
@@ -702,17 +702,24 @@
                 if(b) b.className = 'px-3.5 py-2 text-xs font-bold rounded-xl text-slate-500 hover:text-slate-900 dark:hover:text-white transition-all';
             });
 
+            // Restrict previews strictly based on language
+            if (file && file.language === 'markdown') {
+                btnPreview.classList.remove('hidden');
+            } else {
+                btnPreview.classList.add('hidden');
+            }
+
             if (file && file.language === 'html') {
                 btnHtmlRun.classList.remove('hidden');
             } else {
                 btnHtmlRun.classList.add('hidden');
             }
 
-            if (mode === 'preview') {
+            if (mode === 'preview' && file && file.language === 'markdown') {
                 previewPane.classList.remove('hidden');
                 btnPreview.className = 'px-3.5 py-2 text-xs font-bold rounded-xl bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-sm transition-all';
                 renderMarkdownPreview(file ? file.content : '');
-            } else if (mode === 'htmlrun') {
+            } else if (mode === 'htmlrun' && file && file.language === 'html') {
                 htmlrunPane.classList.remove('hidden');
                 btnHtmlRun.className = 'px-3.5 py-2 text-xs font-bold rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-300 shadow-sm transition-all flex items-center space-x-1';
                 renderHtmlAppPreview(file ? file.content : '');
