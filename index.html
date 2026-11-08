@@ -42,8 +42,6 @@
         .dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
         .glass-panel { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); }
         .dark .glass-panel { background: rgba(10, 12, 20, 0.95); backdrop-filter: blur(20px); }
-        .transition-fast { transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); }
-        .glow-effect { box-shadow: 0 0 30px -5px rgba(99, 102, 241, 0.3); }
     </style>
 </head>
 <body class="h-full bg-[#f8fafc] dark:bg-[#05070b] text-slate-800 dark:text-slate-100 font-sans antialiased overflow-hidden selection:bg-indigo-500 selection:text-white">
@@ -74,27 +72,26 @@
                     </div>
                 </div>
                 <div class="flex items-center space-x-1.5">
-                    <button onclick="toggleUserMode()" id="user-mode-btn" title="Toggle Kids / Adult Mode" class="px-2.5 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-300 font-bold text-[11px] flex items-center space-x-1.5 border border-indigo-200/60 dark:border-indigo-800/60 hover:scale-105 transition-all">
+                    <button type="button" onclick="toggleUserMode()" id="user-mode-btn" title="Toggle Kids / Adult Mode" class="px-2.5 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-300 font-bold text-[11px] flex items-center space-x-1.5 border border-indigo-200/60 dark:border-indigo-800/60 hover:scale-105 transition-all">
                         <i id="user-mode-icon" class="fa-solid fa-graduation-cap"></i>
                         <span id="user-mode-text">Pro Mode</span>
                     </button>
-                    <button onclick="toggleTheme()" title="Toggle Theme" class="w-8 h-8 rounded-xl hover:bg-slate-200/70 dark:hover:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-colors">
-                        <i id="theme-icon" class="fa-solid fa-moon text-xs"></i>
+                    <button type="button" onclick="toggleTheme()" title="Toggle Theme" class="w-8 h-8 rounded-xl hover:bg-slate-200/70 dark:hover:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-colors">
+                        <i id="theme-icon" class="fa-solid fa-sun text-xs"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Workspace Quick Navigation Tabs -->
             <div class="grid grid-cols-4 gap-1 p-2 bg-slate-100/80 dark:bg-[#0d101a] border-b border-slate-200/80 dark:border-slate-800/80 text-[11px] font-semibold text-slate-600 dark:text-slate-400">
-                <button onclick="switchTab('files')" id="nav-tab-files" class="py-2 rounded-xl bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm transition-all text-center"><i class="fa-solid fa-folder-open block text-xs mb-1"></i>Files</button>
-                <button onclick="switchTab('tutorials')" id="nav-tab-tutorials" class="py-2 rounded-xl hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all text-center"><i class="fa-solid fa-book-open block text-xs mb-1"></i>Tutorials</button>
-                <button onclick="switchTab('languages')" id="nav-tab-languages" class="py-2 rounded-xl hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all text-center"><i class="fa-solid fa-globe block text-xs mb-1"></i>Langs</button>
-                <button onclick="switchTab('customlang')" id="nav-tab-customlang" class="py-2 rounded-xl hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all text-center"><i class="fa-solid fa-wand-magic-sparkles block text-xs mb-1"></i>Custom</button>
+                <button type="button" onclick="switchTab('files')" id="nav-tab-files" class="py-2 rounded-xl bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm transition-all text-center"><i class="fa-solid fa-folder-open block text-xs mb-1"></i>Files</button>
+                <button type="button" onclick="switchTab('tutorials')" id="nav-tab-tutorials" class="py-2 rounded-xl hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all text-center"><i class="fa-solid fa-book-open block text-xs mb-1"></i>Tutorials</button>
+                <button type="button" onclick="switchTab('languages')" id="nav-tab-languages" class="py-2 rounded-xl hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all text-center"><i class="fa-solid fa-globe block text-xs mb-1"></i>Langs</button>
+                <button type="button" onclick="switchTab('customlang')" id="nav-tab-customlang" class="py-2 rounded-xl hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all text-center"><i class="fa-solid fa-wand-magic-sparkles block text-xs mb-1"></i>Custom</button>
             </div>
 
             <!-- Sidebar Content Dynamic Panes -->
             <div id="sidebar-pane-files" class="flex-1 flex flex-col overflow-hidden">
-                <!-- Search & Filters -->
                 <div class="p-3 border-b border-slate-200/60 dark:border-slate-800/60 space-y-2">
                     <div class="relative">
                         <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-xs text-slate-400"></i>
@@ -103,13 +100,12 @@
                     </div>
                     <div class="flex items-center justify-between px-1">
                         <span id="file-count-label" class="text-[11px] font-semibold text-slate-400">0 files</span>
-                        <button onclick="createNewFile()" class="px-3 py-1.5 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 text-[11px] font-bold flex items-center space-x-1.5 shadow-md shadow-indigo-500/20 transition-all">
+                        <button type="button" onclick="createNewFile()" class="px-3 py-1.5 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 text-[11px] font-bold flex items-center space-x-1.5 shadow-md shadow-indigo-500/20 transition-all">
                             <i class="fa-solid fa-plus text-[10px]"></i>
                             <span>New File</span>
                         </button>
                     </div>
                 </div>
-                <!-- File Tree List -->
                 <div id="file-list-container" class="flex-1 overflow-y-auto p-2 space-y-1.5"></div>
             </div>
 
@@ -154,7 +150,7 @@
                         <label class="block font-semibold text-[11px] mb-1 text-slate-600 dark:text-slate-300">Starter Template</label>
                         <textarea id="custom-lang-template" rows="3" placeholder="func main() { print('Hello'); }" class="w-full bg-slate-100 dark:bg-slate-900 p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 outline-none font-mono text-[11px] focus:border-indigo-500"></textarea>
                     </div>
-                    <button onclick="publishCustomLanguage()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-bold shadow-lg shadow-indigo-500/20 hover:opacity-95 transition-all">
+                    <button type="button" onclick="publishCustomLanguage()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-bold shadow-lg shadow-indigo-500/20 hover:opacity-95 transition-all">
                         <i class="fa-solid fa-rocket mr-1.5"></i> Publish & Generate Tutorial
                     </button>
                 </div>
@@ -218,16 +214,16 @@
                     <!-- View Mode Switcher -->
                     <div class="bg-slate-100 dark:bg-slate-800 p-1 rounded-2xl flex items-center space-x-1 border border-slate-200/80 dark:border-slate-700/80">
                         <button type="button" onclick="setViewMode('editor')" id="view-mode-editor" class="px-3.5 py-2 text-xs font-bold rounded-xl transition-all">Editor</button>
-                        <button type="button" onclick="setViewMode('preview')" id="view-mode-preview" class="px-3.5 py-2 text-xs font-bold rounded-xl transition-all hidden">Preview</button>
+                        <button type="button" onclick="setViewMode('preview')" id="view-mode-preview" class="px-3.5 py-2 text-xs font-bold rounded-xl transition-all hidden">Markdown Preview</button>
                         <button type="button" onclick="setViewMode('htmlrun')" id="view-mode-htmlrun" class="px-3.5 py-2 text-xs font-bold rounded-xl transition-all text-indigo-600 dark:text-indigo-400 flex items-center space-x-1 hidden">
                             <i class="fa-solid fa-play text-[10px]"></i>
-                            <span>Run App</span>
+                            <span>HTML Run</span>
                         </button>
                     </div>
 
                     <div class="h-6 w-px bg-slate-200 dark:bg-slate-800 mx-1"></div>
 
-                    <!-- Execute Code in Terminal / Sandbox Button -->
+                    <!-- Execute Code Button -->
                     <button type="button" onclick="executeCodeInTerminal()" title="Run Script in Terminal (Ctrl+Enter)" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center space-x-2 shadow-lg shadow-emerald-500/25 transition-all transform hover:scale-105">
                         <i class="fa-solid fa-play text-[10px]"></i>
                         <span>Run</span>
@@ -263,7 +259,7 @@
                             class="flex-1 h-full p-4 bg-transparent resize-none outline-none font-mono text-xs leading-relaxed text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 whitespace-pre overflow-auto"></textarea>
                     </div>
 
-                    <!-- Markdown / Documentation Preview Pane -->
+                    <!-- Markdown Preview Pane -->
                     <div id="preview-pane" class="absolute inset-0 p-8 overflow-y-auto hidden prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200"></div>
 
                     <!-- HTML Live App Sandbox Pane -->
@@ -284,8 +280,8 @@
                             <span class="text-slate-300 font-semibold ml-2"><i class="fa-solid fa-terminal mr-1.5 text-emerald-400"></i> ScribbleCode Interactive REPL & Terminal</span>
                         </div>
                         <div class="flex items-center space-x-4 text-slate-400">
-                            <button onclick="clearTerminal()" class="hover:text-white transition-colors" title="Clear Terminal"><i class="fa-solid fa-ban mr-1"></i> Clear</button>
-                            <button onclick="toggleTerminal()" class="hover:text-white transition-colors"><i class="fa-solid fa-chevron-down text-sm"></i></button>
+                            <button type="button" onclick="clearTerminal()" class="hover:text-white transition-colors" title="Clear Terminal"><i class="fa-solid fa-ban mr-1"></i> Clear</button>
+                            <button type="button" onclick="toggleTerminal()" class="hover:text-white transition-colors"><i class="fa-solid fa-chevron-down text-sm"></i></button>
                         </div>
                     </div>
                     <!-- Terminal Output & Console Area -->
@@ -325,12 +321,12 @@
                     <span id="tutorial-modal-badge" class="px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold uppercase bg-indigo-100 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300">Tutorial</span>
                     <h2 id="tutorial-modal-title" class="font-bold text-lg text-slate-900 dark:text-white mt-1.5">Tutorial Title</h2>
                 </div>
-                <button onclick="closeTutorialModal()" class="w-8 h-8 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"><i class="fa-solid fa-xmark text-sm"></i></button>
+                <button type="button" onclick="closeTutorialModal()" class="w-8 h-8 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"><i class="fa-solid fa-xmark text-sm"></i></button>
             </div>
             <div id="tutorial-modal-body" class="flex-1 overflow-y-auto space-y-3 text-xs leading-relaxed text-slate-700 dark:text-slate-300 font-mono"></div>
             <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
-                <button onclick="closeTutorialModal()" class="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">Close</button>
-                <button onclick="loadTutorialIntoEditor()" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-indigo-600 text-white hover:bg-indigo-700 shadow-lg shadow-indigo-500/25 flex items-center space-x-2">
+                <button type="button" onclick="closeTutorialModal()" class="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">Close</button>
+                <button type="button" onclick="loadTutorialIntoEditor()" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-indigo-600 text-white hover:bg-indigo-700 shadow-lg shadow-indigo-500/25 flex items-center space-x-2">
                     <i class="fa-solid fa-code"></i>
                     <span>Load Code into Editor</span>
                 </button>
@@ -343,11 +339,11 @@
         <div class="bg-white dark:bg-[#111420] rounded-3xl p-6 w-full max-w-md border border-slate-200 dark:border-slate-800 shadow-2xl space-y-4">
             <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
                 <h3 class="font-bold text-base text-slate-900 dark:text-white">Enterprise Cloud Sync & Backup</h3>
-                <button onclick="closeCloudBackupModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+                <button type="button" onclick="closeCloudBackupModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <p class="text-xs text-slate-500 dark:text-slate-400">Export or import your entire enterprise codebase archive as a secure encrypted JSON bundle.</p>
             <div class="space-y-2.5 pt-2">
-                <button onclick="exportWorkspace()" class="w-full py-3 rounded-xl bg-indigo-600 text-white text-xs font-bold shadow-md hover:bg-indigo-700 transition-all flex items-center justify-center space-x-2">
+                <button type="button" onclick="exportWorkspace()" class="w-full py-3 rounded-xl bg-indigo-600 text-white text-xs font-bold shadow-md hover:bg-indigo-700 transition-all flex items-center justify-center space-x-2">
                     <i class="fa-solid fa-download"></i>
                     <span>Download Workspace Archive (.json)</span>
                 </button>
@@ -362,12 +358,39 @@
 
     <!-- Core Enterprise Engine & Script Logic -->
     <script>
-        // Language Catalog with Enterprise Templates
         const languageCatalog = [
-            { id: 'javascript', name: 'JavaScript', icon: 'fa-brands fa-js', ext: '.js', color: 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300', template: '// Enterprise JavaScript Engine\nconst processData = (items) => {\n    console.log("Processing " + items.length + " items...");\n    return items.map(x => x * 2);\n};\n\nconsole.log(processData([10, 20, 30]));' },
-            { id: 'python', name: 'Python', icon: 'fa-brands fa-python', ext: '.py', color: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300', template: '# Enterprise Python Script\ndef fibonacci(n):\n    a, b = 0, 1\n    for _ in range(n):\n        print(a, end=" ")\n        a, b = b, a + b\n\nfibonacci(10)' },
-            { id: 'html', name: 'HTML / Web', icon: 'fa-brands fa-html5', ext: '.html', color: 'bg-orange-100 text-orange-800 dark:bg-orange-950/60 dark:text-orange-300', template: '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <title>ScribbleCode App</title>\n    <script src="https://cdn.tailwindcss.com"><\/script>\n</head>\n<body class="bg-slate-900 text-white flex items-center justify-center h-screen">\n    <div class="text-center p-8 bg-slate-800 rounded-3xl shadow-2xl border border-slate-700">\n        <h1 class="text-3xl font-extrabold text-indigo-400 mb-3">Hello ScribbleCode</h1>\n        <p class="text-slate-400">Enterprise live preview operational.</p>\n    </div>\n</body>\n</html>' },
-            { id: 'typescript', name: 'TypeScript', icon: 'fa-solid fa-code', ext: '.ts', color: 'bg-sky-100 text-sky-800 dark:bg-sky-950/60 dark:text-sky-300', template: 'interface User {\n    id: number;\n    name: string;\n}\n\nconst greet = (user: User): string => {\n    return `Welcome back, ${user.name}`;\n};\n\nconsole.log(greet({ id: 1, name: 'Senior Developer' }));' },
+            { 
+                id: 'javascript', 
+                name: 'JavaScript', 
+                icon: 'fa-brands fa-js', 
+                ext: '.js', 
+                color: 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300', 
+                template: '// Enterprise JavaScript Engine\nconst processData = (items) => {\n    console.log("Processing " + items.length + " items...");\n    return items.map(x => x * 2);\n};\n\nconsole.log(processData([10, 20, 30]));' 
+            },
+            { 
+                id: 'python', 
+                name: 'Python', 
+                icon: 'fa-brands fa-python', 
+                ext: '.py', 
+                color: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300', 
+                template: '# Enterprise Python Script\ndef fibonacci(n):\n    a, b = 0, 1\n    for _ in range(n):\n        print(a, end=" ")\n        a, b = b, a + b\n\nfibonacci(10)' 
+            },
+            { 
+                id: 'html', 
+                name: 'HTML / Web', 
+                icon: 'fa-brands fa-html5', 
+                ext: '.html', 
+                color: 'bg-orange-100 text-orange-800 dark:bg-orange-950/60 dark:text-orange-300', 
+                template: '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <title>ScribbleCode App</title>\n    <script src="https://cdn.tailwindcss.com"><\\/script>\n</head>\n<body class="bg-slate-900 text-white flex items-center justify-center h-screen">\n    <div class="text-center p-8 bg-slate-800 rounded-3xl shadow-2xl border border-slate-700">\n        <h1 class="text-3xl font-extrabold text-indigo-400 mb-3">Hello ScribbleCode</h1>\n        <p class="text-slate-400">Enterprise live preview operational.</p>\n    </div>\n</body>\n</html>' 
+            },
+            { 
+                id: 'typescript', 
+                name: 'TypeScript', 
+                icon: 'fa-solid fa-code', 
+                ext: '.ts', 
+                color: 'bg-sky-100 text-sky-800 dark:bg-sky-950/60 dark:text-sky-300', 
+                template: 'interface User {\n    id: number;\n    name: string;\n}\n\nconst greet = (user: User): string => {\n    return `Welcome back, ${user.name}`;\n};\n\nconsole.log(greet({ id: 1, name: \'Senior Developer\' }));' 
+            },
             { id: 'cpp', name: 'C++', icon: 'fa-solid fa-c', ext: '.cpp', color: 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300', template: '#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "ScribbleCode Enterprise C++ Runtime" << endl;\n    return 0;\n}' },
             { id: 'rust', name: 'Rust', icon: 'fa-solid fa-gear', ext: '.rs', color: 'bg-orange-100 text-orange-900 dark:bg-orange-950/60 dark:text-orange-200', template: 'fn main() {\n    println!("Hello, enterprise Rust developer!");\n}' },
             { id: 'go', name: 'Go', icon: 'fa-solid fa-bolt', ext: '.go', color: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/60 dark:text-cyan-300', template: 'package main\n\nimport "fmt"\n\nfunc main() {\n    fmt.Println("Hello from Go Enterprise service")\n}' },
@@ -378,7 +401,7 @@
             { id: 'swift', name: 'Swift', icon: 'fa-solid fa-feather', ext: '.swift', color: 'bg-orange-100 text-orange-800 dark:bg-orange-950/60 dark:text-orange-300', template: 'let message = "Hello Swift Enterprise"\nprint(message)' },
             { id: 'kotlin', name: 'Kotlin', icon: 'fa-solid fa-mobile', ext: '.kt', color: 'bg-violet-100 text-violet-800 dark:bg-violet-950/60 dark:text-violet-300', template: 'fun main() {\n    println("Kotlin Multiplatform Ready")\n}' },
             { id: 'sql', name: 'SQL', icon: 'fa-solid fa-database', ext: '.sql', color: 'bg-teal-100 text-teal-800 dark:bg-teal-950/60 dark:text-teal-300', template: 'SELECT department, COUNT(*) as emp_count\nFROM employees\nWHERE active = 1\nGROUP BY department;' },
-            { id: 'markdown', name: 'Markdown', icon: 'fa-brands fa-markdown', ext: '.md', color: 'bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200', template: '# Enterprise Documentation\n\n- Zero-latency editing\n- Live preview & terminal runner\n- 20+ language support' },
+            { id: 'markdown', name: 'Markdown', icon: 'fa-brands fa-markdown', ext: '.md', color: 'bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200', template: '# Enterprise Documentation\n\n- Zero-latency editing\n- Live Markdown preview & HTML preview runner\n- 20+ language support' },
             { id: 'bash', name: 'Bash', icon: 'fa-solid fa-terminal', ext: '.sh', color: 'bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200', template: '#!/bin/bash\necho "Running build scripts..."\nnpm run build' },
             { id: 'lua', name: 'Lua', icon: 'fa-solid fa-moon', ext: '.lua', color: 'bg-blue-100 text-blue-900 dark:bg-blue-950/60 dark:text-blue-200', template: 'local function calculate(a, b)\n    return a + b\nend\nprint(calculate(10, 25))' },
             { id: 'r', name: 'R', icon: 'fa-solid fa-chart-line', ext: '.r', color: 'bg-sky-100 text-sky-900 dark:bg-sky-950/60 dark:text-sky-200', template: 'data <- c(12, 45, 67, 89, 23)\nprint(mean(data))' },
@@ -386,7 +409,6 @@
             { id: 'dart', name: 'Dart', icon: 'fa-solid fa-mobile-screen', ext: '.dart', color: 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300', template: 'void main() {\n  print("Flutter & Dart Enterprise");\n}' }
         ];
 
-        // Interactive Tutorials
         let tutorials = [
             {
                 id: 'tut-1',
@@ -394,7 +416,7 @@
                 category: 'JavaScript',
                 badgeBg: 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300',
                 description: 'Master async/await, fetch APIs, and Promise chaining for robust web apps.',
-                content: `### Understanding Asynchronous JavaScript\n\nModern web applications require non-blocking execution. Promises and \`async/await\` allow you to fetch data without freezing the main thread.\n\n\`\`\`javascript\nconst fetchEnterpriseMetrics = async () => {\n    try {\n        console.log("Connecting to secure server...");\n        await new Promise(resolve => setTimeout(resolve, 1000));\n        const metrics = { cpu: '14%', memory: '4.2GB', status: 'Healthy' };\n        console.table(metrics);\n    } catch (err) {\n        console.error("Connection failed:", err);\n    }\n};\n\nfetchEnterpriseMetrics();\n\`\`\``,
+                content: `### Understanding Asynchronous JavaScript\n\nModern web applications require non-blocking execution.\n\n\`\`\`javascript\nconst fetchEnterpriseMetrics = async () => {\n    try {\n        console.log("Connecting to secure server...");\n        await new Promise(resolve => setTimeout(resolve, 1000));\n        const metrics = { cpu: '14%', memory: '4.2GB', status: 'Healthy' };\n        console.table(metrics);\n    } catch (err) {\n        console.error("Connection failed:", err);\n    }\n};\n\nfetchEnterpriseMetrics();\n\`\`\``,
                 code: `const fetchEnterpriseMetrics = async () => {\n    try {\n        console.log("Connecting to secure server...");\n        await new Promise(resolve => setTimeout(resolve, 1000));\n        const metrics = { cpu: '14%', memory: '4.2GB', status: 'Healthy' };\n        console.table(metrics);\n    } catch (err) {\n        console.error("Connection failed:", err);\n    }\n};\n\nfetchEnterpriseMetrics();`
             },
             {
@@ -403,7 +425,7 @@
                 category: 'Python',
                 badgeBg: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300',
                 description: 'Implement an O(log n) efficient search algorithm in Python.',
-                content: `### Binary Search Algorithm\n\nBinary search is a logarithmic time complexity algorithm that finds the position of a target value within a sorted array.\n\n\`\`\`python\ndef binary_search(arr, target):\n    low = 0\n    high = len(arr) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1\n\nsorted_nums = [10, 23, 45, 70, 89, 102]\nprint("Index of 70:", binary_search(sorted_nums, 70))\n\`\`\``,
+                content: `### Binary Search Algorithm\n\nBinary search is a logarithmic time complexity algorithm.\n\n\`\`\`python\ndef binary_search(arr, target):\n    low = 0\n    high = len(arr) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1\n\nsorted_nums = [10, 23, 45, 70, 89, 102]\nprint("Index of 70:", binary_search(sorted_nums, 70))\n\`\`\``,
                 code: `def binary_search(arr, target):\n    low = 0\n    high = len(arr) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1\n\nsorted_nums = [10, 23, 45, 70, 89, 102]\nprint("Index of 70:", binary_search(sorted_nums, 70))`
             },
             {
@@ -412,12 +434,11 @@
                 category: 'HTML / CSS',
                 badgeBg: 'bg-orange-100 text-orange-800 dark:bg-orange-950/60 dark:text-orange-300',
                 description: 'Learn CSS Flexbox and Grid fundamentals for professional responsive user interfaces.',
-                content: `### Responsive Layouts with Tailwind CSS\n\nStructuring UI elements properly ensures compatibility across mobile, tablet, and desktop screens.\n\n\`\`\`html\n<div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-6">\n    <div class="p-4 bg-indigo-500 text-white rounded-xl shadow-lg">Card One</div>\n    <div class="p-4 bg-violet-500 text-white rounded-xl shadow-lg">Card Two</div>\n    <div class="p-4 bg-emerald-500 text-white rounded-xl shadow-lg">Card Three</div>\n</div>\n\`\`\``,
-                code: `<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <script src="https://cdn.tailwindcss.com"><\/script>\n</head>\n<body class="p-8 bg-slate-900 text-white">\n    <h2 class="text-2xl font-bold mb-6">Responsive Grid Demo</h2>\n    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">\n        <div class="p-6 bg-indigo-600 rounded-2xl shadow-lg font-bold">Card One</div>\n        <div class="p-6 bg-violet-600 rounded-2xl shadow-lg font-bold">Card Two</div>\n        <div class="p-6 bg-emerald-600 rounded-2xl shadow-lg font-bold">Card Three</div>\n    </div>\n</body>\n</html>`
+                content: `### Responsive Layouts with Tailwind CSS\n\nStructuring UI elements properly ensures compatibility across screens.\n\n\`\`\`html\n<div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-6">\n    <div class="p-4 bg-indigo-500 text-white rounded-xl shadow-lg">Card One</div>\n    <div class="p-4 bg-violet-500 text-white rounded-xl shadow-lg">Card Two</div>\n    <div class="p-4 bg-emerald-500 text-white rounded-xl shadow-lg">Card Three</div>\n</div>\n\`\`\``,
+                code: `<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <script src="https://cdn.tailwindcss.com"><\\/script>\n</head>\n<body class="p-8 bg-slate-900 text-white">\n    <h2 class="text-2xl font-bold mb-6">Responsive Grid Demo</h2>\n    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">\n        <div class="p-6 bg-indigo-600 rounded-2xl shadow-lg font-bold">Card One</div>\n        <div class="p-6 bg-violet-600 rounded-2xl shadow-lg font-bold">Card Two</div>\n        <div class="p-6 bg-emerald-600 rounded-2xl shadow-lg font-bold">Card Three</div>\n    </div>\n</body>\n</html>`
             }
         ];
 
-        // Workspace State
         let files = JSON.parse(localStorage.getItem('scribblecode_enterprise_files')) || [
             {
                 id: 'file-1',
@@ -444,7 +465,6 @@
         let activeTab = 'files';
         let communityLanguages = JSON.parse(localStorage.getItem('scribblecode_community_langs')) || [];
 
-        // Initialization on window load
         window.onload = function() {
             applyTheme();
             applyUserMode();
@@ -456,7 +476,6 @@
             setupKeyboardShortcuts();
         };
 
-        // Theme Handling
         function toggleTheme() {
             isDarkMode = !isDarkMode;
             localStorage.setItem('scribblecode_theme', isDarkMode ? 'dark' : 'light');
@@ -473,7 +492,6 @@
             }
         }
 
-        // Kids vs Pro Mode
         function toggleUserMode() {
             userMode = userMode === 'pro' ? 'kids' : 'pro';
             localStorage.setItem('scribblecode_user_mode', userMode);
@@ -500,7 +518,6 @@
             }
         }
 
-        // Sidebar Tab Switcher
         function switchTab(tab) {
             activeTab = tab;
             ['files', 'tutorials', 'languages', 'customlang'].forEach(t => {
@@ -518,7 +535,6 @@
             });
         }
 
-        // Toast Notification System
         function showToast(msg, icon = 'fa-circle-check text-emerald-400') {
             const toast = document.getElementById('toast');
             document.getElementById('toast-message').innerText = msg;
@@ -529,10 +545,10 @@
             }, 2600);
         }
 
-        // File Explorer & CRUD
         function renderFileList() {
             const container = document.getElementById('file-list-container');
-            const query = document.getElementById('search-input').value.toLowerCase();
+            const queryInput = document.getElementById('search-input');
+            const query = queryInput ? queryInput.value.toLowerCase() : '';
             container.innerHTML = '';
 
             let filtered = files.filter(f => f.title.toLowerCase().includes(query) || f.content.toLowerCase().includes(query));
@@ -565,7 +581,7 @@
                             <span class="text-[10px] text-slate-400 font-mono uppercase">${file.language}</span>
                         </div>
                     </div>
-                    <button onclick="event.stopPropagation(); deleteFile('${file.id}')" title="Delete File" class="w-8 h-8 rounded-xl hover:bg-rose-100 dark:hover:bg-rose-950/50 text-slate-400 hover:text-rose-600 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
+                    <button type="button" onclick="event.stopPropagation(); deleteFile('${file.id}')" title="Delete File" class="w-8 h-8 rounded-xl hover:bg-rose-100 dark:hover:bg-rose-950/50 text-slate-400 hover:text-rose-600 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
                         <i class="fa-regular fa-trash-can text-xs"></i>
                     </button>
                 `;
@@ -634,9 +650,9 @@
             updateLineNumbers();
             renderFileList();
 
-            if (file.viewMode === 'preview') {
+            if (file.viewMode === 'preview' && file.language === 'markdown') {
                 renderMarkdownPreview(content);
-            } else if (file.viewMode === 'htmlrun') {
+            } else if (file.viewMode === 'htmlrun' && file.language === 'html') {
                 renderHtmlAppPreview(content);
             }
         }
@@ -678,7 +694,7 @@
             }
         }
 
-        // View Mode Switcher
+        // View Mode Switcher with Strict Preview Restrictions
         function setViewMode(mode, save = true) {
             const file = files.find(f => f.id === currentFileId);
             if (file && save) {
@@ -699,10 +715,10 @@
             htmlrunPane.classList.add('hidden');
 
             [btnEditor, btnPreview, btnHtmlRun].forEach(b => {
-                if(b) b.className = 'px-3.5 py-2 text-xs font-bold rounded-xl text-slate-500 hover:text-slate-900 dark:hover:text-white transition-all';
+                if (b) b.className = 'px-3.5 py-2 text-xs font-bold rounded-xl text-slate-500 hover:text-slate-900 dark:hover:text-white transition-all';
             });
 
-            // Restrict previews strictly based on language
+            // STRICT RESTRICTION: Preview ONLY for Markdown and HTML
             if (file && file.language === 'markdown') {
                 btnPreview.classList.remove('hidden');
             } else {
@@ -729,14 +745,12 @@
             }
         }
 
-        // Live HTML Sandbox Runner
         function renderHtmlAppPreview(content) {
             const iframe = document.getElementById('htmlrun-iframe');
             const blob = new Blob([content], { type: 'text/html;charset=utf-8' });
             iframe.src = URL.createObjectURL(blob);
         }
 
-        // Markdown Preview Renderer
         function renderMarkdownPreview(content) {
             const pane = document.getElementById('preview-pane');
             if (!content.trim()) {
@@ -757,7 +771,6 @@
             pane.innerHTML = html;
         }
 
-        // Terminal Toggle & REPL Runner
         function toggleTerminal() {
             const drawer = document.getElementById('terminal-drawer');
             const badge = document.getElementById('terminal-badge');
@@ -870,7 +883,6 @@
             }
         }
 
-        // Render Tutorials List
         let activeTutorialIndex = null;
         function renderTutorialsList() {
             const container = document.getElementById('tutorials-list');
@@ -935,13 +947,13 @@
             showToast(`Loaded "${tut.title}" tutorial into editor`);
         }
 
-        // Render Languages Catalog Grid
         function renderLanguageCatalog() {
             const grid = document.getElementById('language-catalog-grid');
             grid.innerHTML = '';
 
             languageCatalog.forEach(lang => {
                 const btn = document.createElement('button');
+                btn.type = 'button';
                 btn.className = 'p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-indigo-500/60 transition-all flex flex-col items-center text-center space-y-2 shadow-sm group';
                 btn.onclick = () => loadLanguageTemplate(lang);
 
@@ -972,12 +984,16 @@
             showToast(`Loaded ${lang.name} enterprise template`);
         }
 
-        // Custom Language Publisher
         function publishCustomLanguage() {
-            const name = document.getElementById('custom-lang-name').value.trim();
-            const ext = document.getElementById('custom-lang-ext').value.trim();
-            const keywords = document.getElementById('custom-lang-keywords').value.trim();
-            const template = document.getElementById('custom-lang-template').value.trim();
+            const nameEl = document.getElementById('custom-lang-name');
+            const extEl = document.getElementById('custom-lang-ext');
+            const keywordsEl = document.getElementById('custom-lang-keywords');
+            const templateEl = document.getElementById('custom-lang-template');
+
+            const name = nameEl.value.trim();
+            const ext = extEl.value.trim();
+            const keywords = keywordsEl.value.trim();
+            const template = templateEl.value.trim();
 
             if (!name || !ext) {
                 showToast('Please enter a language name and file extension', 'fa-triangle-exclamation text-amber-400');
@@ -1015,10 +1031,10 @@
             renderTutorialsList();
             renderCommunityLanguages();
 
-            document.getElementById('custom-lang-name').value = '';
-            document.getElementById('custom-lang-ext').value = '';
-            document.getElementById('custom-lang-keywords').value = '';
-            document.getElementById('custom-lang-template').value = '';
+            nameEl.value = '';
+            extEl.value = '';
+            keywordsEl.value = '';
+            templateEl.value = '';
 
             switchTab('files');
             showToast(`Successfully published "${name}" & auto-generated tutorial!`);
@@ -1047,7 +1063,6 @@
             });
         }
 
-        // Editor Helpers
         function updateLineNumbers() {
             const textarea = document.getElementById('main-textarea');
             const lineNumbers = document.getElementById('line-numbers');
